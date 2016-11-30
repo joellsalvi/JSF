@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:j="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+	<ui:composition template="/_template.xhtml">
+	
+		<j:metadata>
+			<j:viewParam name="autorId" value="#{autorBean.autorId}"/>
+			<j:viewAction action="#{autorBean.carregaAutor}" if="#{param.autorId != null}"/>
+		</j:metadata>
+	
+		<ui:define name="titulo">
+			Novo Autor
+		</ui:define>
+		<ui:define name="conteudo">
+			<h:form id="autor">
+				<fieldset>
+					<legend>Dados do Autor</legend>
+					<h:panelGrid columns="3">
+						
+						<h:outputLabel value="Nome:" for="nome" />
+						<h:inputText id="nome" value="#{autorBean.autor.nome}" required="true">
+							<j:validateLength minimum="5" />
+						</h:inputText>
+						<h:message for="nome"/>
+						
+						<h:outputLabel value="Email:" for="email" />
+						<h:inputText id="email" value="#{autorBean.autor.email}" required="true">
+							<j:passThroughAttribute name="type" value="email"/>
+						</h:inputText>
+						<h:message for="email"/>
+						
+						<h:commandButton value="Gravar" action="#{autorBean.gravar}" />
+					</h:panelGrid>
+				</fieldset>
+			</h:form>
+			
+			<h:form id="tabelaAutores">
+				<fieldset>
+					<legend>Lista de Autores</legend>
+					<h:dataTable value="#{autorBean.autores}" var="autor">
+						<h:column>
+							<h:outputText value="#{autor.nome}" />
+						</h:column>
+						<h:column>
+							<j:facet name="header">Alterar</j:facet>
+							<h:commandLink action="#{autorBean.alterar(autor)}" value="alterar" />
+						</h:column>
+						<h:column>
+							<j:facet name="header">Remover</j:facet>
+							<h:commandLink action="#{autorBean.remover(autor)}" value="remover" />
+						</h:column>
+					</h:dataTable>
+				</fieldset>
+			</h:form>
+		</ui:define>
+		
+		<ui:define name="footer">Autor</ui:define>
+	</ui:composition>
+
+</html>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<style type="text/css">
+		.footer {
+			background: #ccc;
+			width: 100%;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			position: fixed;
+		}
+	</style>
+</h:head>
+
+<h:body>
+
+	<div>
+		<h:graphicImage name="logo.png" library="img" />
+		<h:form rendered="#{usuarioLogado != null}">
+			<h:outputText value="Usuário logado:"/>
+			<h:outputText value="#{usuarioLogado.email}" />
+			<br />
+			<h:commandLink action="#{loginBean.logout}" value="Efetuar Logout" />
+		</h:form>
+		<h1>
+			<ui:insert name="titulo" />
+		</h1>
+	</div>
+
+	<div>
+		<ui:insert name="conteudo" />
+	</div>
+
+	<div class="footer">
+		<p>
+			copyright 2016 - 
+			<ui:insert name="footer" />
+		</p>
+	</div>
+
+</h:body>
+
+</html>
