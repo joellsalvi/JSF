@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
@@ -16,6 +16,10 @@
 			position: fixed;
 		}
 	</style>
+	
+	<link rel="stylesheet" href="resources\bootstrap-3.3.7-dist\css\bootstrap.min.css"/>
+	<link rel="stylesheet" href="resources\bootstrap-3.3.7-dist\css\bootstrap-theme.min.css" />
+	
 </h:head>
 
 <h:body>
@@ -23,7 +27,7 @@
 	<div>
 		<h:graphicImage name="logo.png" library="img" />
 		<h:form rendered="#{usuarioLogado != null}">
-			<h:outputText value="Usuário logado:"/>
+			<h:outputText value="UsuÃ¡rio logado:"/>
 			<h:outputText value="#{usuarioLogado.email}" />
 			<br />
 			<h:commandLink action="#{loginBean.logout}" value="Efetuar Logout" />
@@ -34,7 +38,7 @@
 	</div>
 
 	<div>
-		<ui:insert name="conteudo" />
+		<ui:insert name="body" />
 	</div>
 
 	<div class="footer">
@@ -44,6 +48,9 @@
 		</p>
 	</div>
 
+	<script src="resources\bootstrap-3.3.7-dist\js\jquery.min.js"></script>
+	<script src="resources\bootstrap-3.3.7-dist\js\bootstrap.min.js" />
+	
 </h:body>
 
 </html>

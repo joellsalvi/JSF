@@ -10,7 +10,7 @@
 			Login
 		</ui:define>
 		
-		<ui:define name="conteudo">
+		<ui:define name="body">
 			<h:messages globalOnly="true" />
 			
 			<h:form id="login">
@@ -30,6 +30,7 @@
 						<h:message for="senha"/>
 						
 						<h:commandButton value="Login" action="#{loginBean.efetuarLogin}" />
+						<h:commandLink value="Cadastrar" action="novoUsuario?faces-redirect=true" immediate="true" />
 					</h:panelGrid>
 				</fieldset>
 			</h:form>

@@ -16,7 +16,7 @@ public class Autorizador implements PhaseListener {
 		
 		String pageViewId = context.getViewRoot().getViewId();
 		
-		if("/login.xhtml".equals(pageViewId)) {
+		if("/login.xhtml".equals(pageViewId) || "/novoUsuario.xhtml".equals(pageViewId)) {
 			return;
 		}
 		

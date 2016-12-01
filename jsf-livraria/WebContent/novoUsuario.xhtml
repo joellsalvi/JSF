@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:j="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<!--
+<h:body>
+<ui:include src="views/livro.xhtml" />
+</h:body>
+-->
+
+<ui:composition template="/_template.xhtml">
+	<ui:define name="titulo">
+			Cadastro de Novo Usuário - (Com BootsTrap)
+		</ui:define>
+
+	<ui:define name="body">
+		<h:messages />
+		<h:form id="novoUsuario" class="form-horizontal">
+
+				<div class="form-group">
+					<h:outputLabel value="Email" for="email" class="col-sm-2 control-label" />
+					<div class="col-sm-10">
+						<h:inputText id="email" value="#{loginBean.usuario.email}"
+							required="true">
+							<j:passThroughAttribute name="type" value="email" />
+						</h:inputText>
+						<h:message for="email" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel value="Confirmar Email" for="confirmarEmail" class="col-sm-2 control-label" />
+					<div class="col-sm-10">
+						<h:inputText id="confirmarEmail"
+							value="#{loginBean.usuario.confirmarEmail}" required="true">
+							<j:passThroughAttribute name="type" value="email" />
+						</h:inputText>
+						<h:message for="confirmarEmail" />
+					</div>
+				</div>
+				<!-- Criar validacao ajax validando que senha/email e confirmar senha/email não coincidem -->
+				<div class="form-group">
+					<h:outputLabel value="Senha" for="senha" class="col-sm-2 control-label" />
+					<div class="col-sm-10">
+						<h:inputText id="senha" value="#{loginBean.usuario.senha}"
+							required="true">
+							<j:passThroughAttribute name="type" value="password" />
+						</h:inputText>
+						<h:message for="senha" />
+						<!-- 						<h:inputSecret id="senha" value="#{loginBean.usuario.senha}" required="true" /> -->
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel value="Confirmar Senha" for="confirmarSenha" class="col-sm-2 control-label" />
+					<div class="col-sm-10">
+						<h:inputText id="confirmarSenha"
+							value="#{loginBean.usuario.confirmarSenha}" required="true">
+							<j:passThroughAttribute name="type" value="password" />
+						</h:inputText>
+						<h:message for="confirmarSenha" />
+						<!-- 						<h:inputSecret id="confirmarSenha" value="#{loginBean.usuario.confirmarSenha}" required="true" /> -->
+					</div>
+				</div>
+
+				<div class="form-group">
+					<h:outputLabel value="Autenticar após criar Usuário?" class="col-sm-2 control-label"
+						for="autenticarAposCriarUsuario" />
+					<div class="col-sm-10">
+						<h:selectBooleanCheckbox id="autenticarAposCriarUsuario"
+							value="#{loginBean.autenticarAposCriarUsuario}" />
+					</div>
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-2"/>
+					<div class="col-sm-2">
+						<h:commandButton action="#{loginBean.gravarUsuario}"
+							value="Registrar Usuário" />
+					</div>
+					<div class="col-sm-2">
+						<h:commandLink action="login?faces-redirect=true" value="Voltar"
+							immediate="true" />
+					</div>
+				</div>
+				
+		</h:form>
+
+	</ui:define>
+
+	<ui:define name="footer">
+			Novo Usuário
+		</ui:define>
+</ui:composition>
+
+</html>

@@ -63,10 +63,6 @@ public class LivroBean {
 		livro = new Livro();
 	}
 	
-	public void alterar(Livro livro) {
-		this.livro = livro;
-	}
-
 	public void remover(Livro livro) {
 		new DAO<Livro>(Livro.class).remove(livro);
 	}

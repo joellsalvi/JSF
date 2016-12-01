@@ -3,6 +3,7 @@ package br.com.caelum.livraria.modelo;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -16,6 +17,10 @@ public class Usuario {
 	
 	@Email
 	private String email;
+	@Transient
+	private String confirmarSenha;
+	@Transient
+	private String confirmarEmail;
 
 	public Integer getId() {
 		return id;
@@ -39,6 +44,22 @@ public class Usuario {
 
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+
+	public String getConfirmarSenha() {
+		return confirmarSenha;
+	}
+
+	public void setConfirmarSenha(String confirmarSenha) {
+		this.confirmarSenha = confirmarSenha;
+	}
+
+	public String getConfirmarEmail() {
+		return confirmarEmail;
+	}
+
+	public void setConfirmarEmail(String confirmarEmail) {
+		this.confirmarEmail = confirmarEmail;
 	}
 
 }
